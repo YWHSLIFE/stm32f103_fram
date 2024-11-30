@@ -1,0 +1,12 @@
+templa\signal.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/signal.c
+templa\signal.o: D:\SOFT\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+templa\signal.o: D:\SOFT\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+templa\signal.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rthw.h
+templa\signal.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rtthread.h
+templa\signal.o: ../Inc/rtconfig.h
+templa\signal.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rtdebug.h
+templa\signal.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rtdef.h
+templa\signal.o: D:\SOFT\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+templa\signal.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rtservice.h
+templa\signal.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rtm.h
+templa\signal.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rtthread.h

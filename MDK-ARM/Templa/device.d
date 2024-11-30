@@ -1,0 +1,9 @@
+templa\device.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/device/device.c
+templa\device.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rtthread.h
+templa\device.o: ../Inc/rtconfig.h
+templa\device.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rtdebug.h
+templa\device.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rtdef.h
+templa\device.o: D:\SOFT\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+templa\device.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rtservice.h
+templa\device.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rtm.h
+templa\device.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rtthread.h

@@ -1,0 +1,10 @@
+templa\timer.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/timer.c
+templa\timer.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rtthread.h
+templa\timer.o: ../Inc/rtconfig.h
+templa\timer.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rtdebug.h
+templa\timer.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rtdef.h
+templa\timer.o: D:\SOFT\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+templa\timer.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rtservice.h
+templa\timer.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rtm.h
+templa\timer.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rtthread.h
+templa\timer.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rthw.h

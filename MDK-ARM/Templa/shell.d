@@ -1,0 +1,12 @@
+templa\shell.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/shell.c
+templa\shell.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rthw.h
+templa\shell.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rtthread.h
+templa\shell.o: ../Inc/rtconfig.h
+templa\shell.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rtdebug.h
+templa\shell.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rtdef.h
+templa\shell.o: D:\SOFT\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+templa\shell.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rtservice.h
+templa\shell.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rtm.h
+templa\shell.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rtthread.h
+templa\shell.o: D:\SOFT\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+templa\shell.o: D:\SOFT\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

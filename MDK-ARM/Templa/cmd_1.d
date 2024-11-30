@@ -1,0 +1,13 @@
+templa\cmd_1.o: ..\Middlewares\Third_Party\RealThread_RTOS_RT-Thread\components\finsh\src\cmd.c
+templa\cmd_1.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rthw.h
+templa\cmd_1.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rtthread.h
+templa\cmd_1.o: ../Inc/rtconfig.h
+templa\cmd_1.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/inc/finsh_config.h
+templa\cmd_1.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rtdebug.h
+templa\cmd_1.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rtdef.h
+templa\cmd_1.o: D:\SOFT\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+templa\cmd_1.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rtservice.h
+templa\cmd_1.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rtm.h
+templa\cmd_1.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rtthread.h
+templa\cmd_1.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/inc/finsh.h
+templa\cmd_1.o: D:\SOFT\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

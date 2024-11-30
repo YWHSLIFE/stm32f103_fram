@@ -1,0 +1,10 @@
+templa\mempool.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/mempool.c
+templa\mempool.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rthw.h
+templa\mempool.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rtthread.h
+templa\mempool.o: ../Inc/rtconfig.h
+templa\mempool.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rtdebug.h
+templa\mempool.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rtdef.h
+templa\mempool.o: D:\SOFT\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+templa\mempool.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rtservice.h
+templa\mempool.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rtm.h
+templa\mempool.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rtthread.h

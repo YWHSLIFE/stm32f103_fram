@@ -1,0 +1,10 @@
+templa\components.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/src/components.c
+templa\components.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rthw.h
+templa\components.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rtthread.h
+templa\components.o: ../Inc/rtconfig.h
+templa\components.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rtdebug.h
+templa\components.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rtdef.h
+templa\components.o: D:\SOFT\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+templa\components.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rtservice.h
+templa\components.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rtm.h
+templa\components.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rtthread.h

@@ -1,7 +1,11 @@
 {
     "files.associations": {
         "rtthread.h": "c",
+        "gpio.h": "c",
+        "usart.h": "c",
+        "main.h": "c",
         "rthw.h": "c",
-        "rtdebug.h": "c"
+        "stdio.h": "c",
+        "types.h": "c"
     }
 }

@@ -1,0 +1,9 @@
+templa\msh_file.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/components/finsh/src/msh_file.c
+templa\msh_file.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rtthread.h
+templa\msh_file.o: ../Inc/rtconfig.h
+templa\msh_file.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rtdebug.h
+templa\msh_file.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rtdef.h
+templa\msh_file.o: D:\SOFT\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+templa\msh_file.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rtservice.h
+templa\msh_file.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rtm.h
+templa\msh_file.o: ../Middlewares/Third_Party/RealThread_RTOS_RT-Thread/include/rtthread.h
