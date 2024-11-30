@@ -31,7 +31,6 @@ int led(void);
 
 int main(void)
 {
-    led();
     return 0;
 }
 
@@ -44,7 +43,7 @@ int led(void)
     for(count = 0 ; count < 10 ;count++)
     {       
         rt_pin_write(LED_PIN, PIN_HIGH);
-        rt_kprintf("led on, count : %d\r\n", count);
+        rt_kprintf("led on, count : %d\r\n", count+1);
         rt_thread_mdelay(500);
         
         rt_pin_write(LED_PIN, PIN_LOW);
