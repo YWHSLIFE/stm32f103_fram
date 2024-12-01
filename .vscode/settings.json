@@ -1,11 +1,9 @@
 {
     "files.associations": {
-        "rtthread.h": "c",
-        "gpio.h": "c",
         "usart.h": "c",
         "main.h": "c",
+        "stm32f1xx_hal.h": "c",
         "rthw.h": "c",
-        "stdio.h": "c",
-        "types.h": "c"
+        "rtthread.h": "c"
     }
 }
