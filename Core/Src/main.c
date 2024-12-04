@@ -11,10 +11,10 @@ int main(void)
     while (1)
     {
         rt_kprintf("main thread\n");
-        sprintf(fps,"%5d",fps_num);
+        sprintf(fps,"FPS:%d",fps_num);
         fps_num = 0;
         OLED_ClearBuff();
-        OLED_WinDrawStr(&oled_win,0,16,16,(uint8_t *)fps);
+        OLED_WinDrawStr(&oled_win,0,0,16,(uint8_t *)fps);
         rt_thread_delay(1000);
     }
 }

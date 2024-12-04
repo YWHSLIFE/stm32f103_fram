@@ -3,7 +3,7 @@
 #include "oled.h"
 
 struct rt_thread oled_thread;
-static rt_uint8_t oled_stack[RT_MAIN_THREAD_STACK_SIZE/4];
+static rt_uint8_t oled_stack[RT_MAIN_THREAD_STACK_SIZE/2];
 
 void OLED_Init(void)
 {
@@ -59,7 +59,7 @@ void oled_thread_entry(void *parameter)
 	while(1)
 	{
         OLED_RefreshBuff();
-		rt_thread_delay(15);
+		rt_thread_delay(20);
 	}
 }
 
@@ -69,7 +69,7 @@ void rt_oled_init(void)
 
 #ifdef RT_USING_HEAP
     tid = rt_thread_create("oled", oled_thread_entry, RT_NULL,
-                           RT_MAIN_THREAD_STACK_SIZE/4, 30, 20);
+                           RT_MAIN_THREAD_STACK_SIZE, 30, 20);
     RT_ASSERT(tid != RT_NULL);
 #else
     rt_err_t result;
