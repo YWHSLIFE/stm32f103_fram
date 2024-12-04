@@ -1,18 +1,24 @@
 #include "main.h"
-#include "usart.h"
-#include "gpio.h"
-#include <rthw.h>
-#include <rtthread.h>
+
+char fps[10];
+int fps_num = 0;
 
 void SystemClock_Config(void);
 
 int main(void)
 {
-  while (1)
-  {
-    rt_thread_delay(1000);
-  }
+    rt_oled_init();
+    while (1)
+    {
+        rt_kprintf("main thread\n");
+        sprintf(fps,"%5d",fps_num);
+        fps_num = 0;
+        OLED_ClearBuff();
+        OLED_WinDrawStr(&oled_win,0,16,16,(uint8_t *)fps);
+        rt_thread_delay(1000);
+    }
 }
+
 static void hello_main(void)
 {
     rt_kprintf("hello thread\n");

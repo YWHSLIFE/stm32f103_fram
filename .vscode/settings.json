@@ -4,6 +4,14 @@
         "main.h": "c",
         "stm32f1xx_hal.h": "c",
         "rthw.h": "c",
-        "rtthread.h": "c"
+        "rtthread.h": "c",
+        "led.h": "c",
+        "gpio.h": "c",
+        "stm32f1xx_hal_conf.h": "c",
+        "oled.h": "c",
+        "spi.h": "c",
+        "oled_g.h": "c",
+        "oledfont.h": "c",
+        "oled_port.h": "c"
     }
 }

@@ -28,12 +28,20 @@ extern "C" {
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f1xx_hal.h"
-
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include "string.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "usart.h"
-/* USER CODE END Includes */
+#include <rthw.h>
+#include <rtthread.h>
 
+#include "usart.h"
+#include "gpio.h"
+/* USER CODE END Includes */
+#include "led.h"
+#include "oled.h"
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
 
@@ -41,7 +49,7 @@ extern "C" {
 
 /* Exported constants --------------------------------------------------------*/
 /* USER CODE BEGIN EC */
-
+extern int fps_num;
 /* USER CODE END EC */
 
 /* Exported macro ------------------------------------------------------------*/
