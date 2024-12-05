@@ -32,9 +32,7 @@ Kalman_t KalmanY = {
 };
 
 /*****************************************************************/
-struct rt_thread mpu6050_thread;
 static rt_timer_t mpu6050_timer;
-static rt_uint8_t mpu6050_stack[RT_MAIN_THREAD_STACK_SIZE];
 static struct rt_semaphore mpu6050_sem; /* 定义一个静态信号量 */
 MPU6050_t MPU6050;
 /*****************************************************************/
@@ -224,17 +222,15 @@ static void mpu6050_timeout(void *parameter)
 void rt_mpu6050_init(void)
 {
     rt_thread_t tid;
-    rt_err_t result;
 
     rt_sem_init(&(mpu6050_sem), "mpu6050", 0, 0);
-
-    tid = &mpu6050_thread;
-    result = rt_thread_init(tid, "mpu6050", mpu6050_thread_entry, RT_NULL,
-                            mpu6050_stack, sizeof(mpu6050_stack), 22, 10);
-    RT_ASSERT(result == RT_EOK);
-	rt_thread_startup(tid);
 	
-	mpu6050_timer = rt_timer_create("mpu6050",mpu6050_timeout,NULL,5,RT_TIMER_FLAG_PERIODIC);
+    tid = rt_thread_create("mpu6050", mpu6050_thread_entry, RT_NULL,
+                           RT_MAIN_THREAD_STACK_SIZE, 22, 20);
+    RT_ASSERT(tid != RT_NULL);
+    rt_thread_startup(tid);
+
+	mpu6050_timer = rt_timer_create("mpu6050",mpu6050_timeout,NULL,10,RT_TIMER_FLAG_PERIODIC);
 	if(mpu6050_timer != NULL)
 		rt_timer_start(mpu6050_timer);
 }

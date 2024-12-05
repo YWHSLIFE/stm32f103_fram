@@ -12,6 +12,7 @@ int main(void)
         // rt_kprintf("main thread\n");
         rt_thread_delay(1000);
     }
+    return 0;
 }
 
 static void hello_main(void)

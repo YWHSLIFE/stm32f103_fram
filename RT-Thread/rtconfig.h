@@ -84,7 +84,7 @@
 
 // <o>The stack size of timer thread <0-8192>
 //  <i>Default: 512
-#define RT_TIMER_THREAD_STACK_SIZE 512
+#define RT_TIMER_THREAD_STACK_SIZE 256
 // </h>
 
 // <h>IPC(Inter-process communication) Configuration
@@ -95,22 +95,22 @@
 
 // <c1>Using Mutex
 //  <i>Using Mutex
-#define RT_USING_MUTEX
+// #define RT_USING_MUTEX
 // </c>
 
 // <c1>Using Event
 //  <i>Using Event
-#define RT_USING_EVENT
+// #define RT_USING_EVENT
 // </c>
 
 // <c1>Using MailBox
 //  <i>Using MailBox
-#define RT_USING_MAILBOX
+// #define RT_USING_MAILBOX
 // </c>
 
 // <c1>Using Message Queue
 //  <i>Using Message Queue
-#define RT_USING_MESSAGEQUEUE
+// #define RT_USING_MESSAGEQUEUE
 // </c>
 // </h>
 

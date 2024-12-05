@@ -2,9 +2,7 @@
 #include "spi.h"
 #include "oled.h"
 
-struct rt_thread oled_thread;
 static rt_timer_t oled_timer;
-static rt_uint8_t oled_stack[RT_MAIN_THREAD_STACK_SIZE];
 
 char fps[10];
 char pitch[20];
@@ -69,13 +67,13 @@ void oled_thread_entry(void *parameter)
 		{
 			time_flag = 0;
 			OLED_ClearBuff();
-			OLED_WinDrawStr(&oled_win,0,0*16,16,(uint8_t *)fps);
+			// OLED_WinDrawStr(&oled_win,0,0*16,16,(uint8_t *)fps);
 			OLED_WinDrawStr(&oled_win,0,1*16,16,(uint8_t *)pitch);
 			OLED_WinDrawStr(&oled_win,0,2*16,16,(uint8_t *)roll);
 		}
         OLED_RefreshBuff();
 		rt_thread_delay(20);
-		fps_num++;
+		// fps_num++;
 	}
 }
 
@@ -85,26 +83,24 @@ static void oled_timeout(void *parameter)
 	if(!time_flag)
 	{
 		time_flag = 1;
-		sprintf(fps,"FPS:%d",fps_num);
+		// sprintf(fps,"FPS:%d",fps_num);
 		sprintf(pitch,"Pitch:%.2f",MPU6050.KalmanAngleX);
 		sprintf(roll,"Roll:%.2f",MPU6050.KalmanAngleY);
 	}
-	fps_num = 0;
+	// fps_num = 0;
 }
 
 void rt_oled_init(void)
 {
     rt_thread_t tid;
-    rt_err_t result;
 
-    tid = &oled_thread;
-    result = rt_thread_init(tid, "oled", oled_thread_entry, RT_NULL,
-                            oled_stack, sizeof(oled_stack), 23, 20);
-    RT_ASSERT(result == RT_EOK);
-	rt_thread_startup(tid);
+	tid = rt_thread_create("oled", oled_thread_entry, RT_NULL,
+                           RT_MAIN_THREAD_STACK_SIZE, 23, 20);
+    RT_ASSERT(tid != RT_NULL);
+    rt_thread_startup(tid);
 	
 	// rt_timer_init(oled_timer,"oled_timeout",oled_timeout,NULL,1000,RT_TIMER_FLAG_ONE_SHOT);
-	oled_timer = rt_timer_create("oled",oled_timeout,NULL,6,RT_TIMER_FLAG_PERIODIC);
+	oled_timer = rt_timer_create("oled",oled_timeout,NULL,20,RT_TIMER_FLAG_PERIODIC);
 	if(oled_timer != NULL)
 		rt_timer_start(oled_timer);
 }
