@@ -14,8 +14,7 @@ void oled_write_byte(uint8_t Byte)
 static void OLED_WriteArray(uint8_t* dat)
 {
 	// HAL_SPI_Transmit(&hspi1,(uint8_t *)dat,OLED_BUFF_SIZE, 1000);
-	if(!HAL_SPI_Transmit_IT(&hspi1,(uint8_t *)dat,OLED_BUFF_SIZE))
-	fps_num++;
+	HAL_SPI_Transmit_IT(&hspi1,(uint8_t *)dat,OLED_BUFF_SIZE);
 }
 void OLED_SendBuff(uint8_t *buff)
 {		    

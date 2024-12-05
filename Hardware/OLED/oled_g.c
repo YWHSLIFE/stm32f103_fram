@@ -4,7 +4,7 @@
 #include "math.h"
 
 uint8_t oled_buff[OLED_HEIGHT/8][OLED_WIDTH] = {0}; //全局buff，对应oled中的GRAM
-uint8_t oled_color = '|'; //默认| 表示白色，'&'表示黑色
+uint8_t oled_color = '!'; //默认| 表示白色，'&'表示黑色
 window oled_win = {
 	.start_x = 0,
 	.start_y = 0,
@@ -40,7 +40,6 @@ void OLED_SetPointColor(uint8_t color)
 		case 2: oled_color = '^';break;
 		default:break;
 	}
-	// oled_color = (color != 0 )?'|':'&';
 } 
 
 
@@ -75,6 +74,7 @@ static void OLED_BuffWriteByte(int16_t x, int16_t y ,uint8_t coverORaddORclear, 
 		case '&':oled_buff[y][x] &= (~val);break;
 		case '^':oled_buff[y][x] ^= val;break;
 		default:
+			oled_buff[y][x] = val;//直接覆盖新的
 			break;
 	}
 }

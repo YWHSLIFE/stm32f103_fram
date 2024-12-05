@@ -1,20 +1,15 @@
 #include "main.h"
 
-char fps[10];
-int fps_num = 0;
 
 void SystemClock_Config(void);
 
 int main(void)
 {
     rt_oled_init();
+    rt_mpu6050_init();
     while (1)
     {
-        rt_kprintf("main thread\n");
-        sprintf(fps,"FPS:%d",fps_num);
-        fps_num = 0;
-        OLED_ClearBuff();
-        OLED_WinDrawStr(&oled_win,0,0,16,(uint8_t *)fps);
+        // rt_kprintf("main thread\n");
         rt_thread_delay(1000);
     }
 }

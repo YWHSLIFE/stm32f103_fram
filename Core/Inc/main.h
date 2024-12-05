@@ -31,6 +31,7 @@ extern "C" {
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 #include "string.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -39,9 +40,12 @@ extern "C" {
 
 #include "usart.h"
 #include "gpio.h"
+#include "spi.h"
+#include "iic.h"
 /* USER CODE END Includes */
 #include "led.h"
 #include "oled.h"
+#include "mpu6050.h"
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
 
@@ -49,7 +53,6 @@ extern "C" {
 
 /* Exported constants --------------------------------------------------------*/
 /* USER CODE BEGIN EC */
-extern int fps_num;
 /* USER CODE END EC */
 
 /* Exported macro ------------------------------------------------------------*/

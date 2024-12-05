@@ -12,6 +12,8 @@
         "spi.h": "c",
         "oled_g.h": "c",
         "oledfont.h": "c",
-        "oled_port.h": "c"
+        "oled_port.h": "c",
+        "iic.h": "c",
+        "mpu6050.h": "c"
     }
 }
