@@ -38,8 +38,8 @@ void HAL_I2C_MspInit(I2C_HandleTypeDef* i2cHandle)
 
     __HAL_RCC_I2C2_CLK_ENABLE();
 
-    HAL_NVIC_SetPriority(I2C2_EV_IRQn, 19, 0);
-    HAL_NVIC_EnableIRQ(I2C2_EV_IRQn);
+    // HAL_NVIC_SetPriority(I2C2_EV_IRQn, 19, 0);
+    // HAL_NVIC_EnableIRQ(I2C2_EV_IRQn);
   }
 }
 

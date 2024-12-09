@@ -42,6 +42,7 @@ extern "C" {
 #include "gpio.h"
 #include "spi.h"
 #include "iic.h"
+#include "pwm.h"
 /* USER CODE END Includes */
 #include "led.h"
 #include "oled.h"

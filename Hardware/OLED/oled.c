@@ -4,11 +4,9 @@
 
 static rt_timer_t oled_timer;
 
-char fps[10];
-char pitch[20];
-char roll[20];
-int fps_num = 0;
-static uint8_t time_flag = 0;
+static char pitch[20];
+static char roll[20];
+static char time_flag = 0;
 
 void OLED_Init(void)
 {
@@ -60,7 +58,6 @@ void OLED_Init(void)
 void oled_thread_entry(void *parameter)
 {
 	OLED_Init();
-    OLED_WinDrawStr(&oled_win,0,0,16,"hello hungry!");
 	while(1)
 	{
 		if(time_flag)

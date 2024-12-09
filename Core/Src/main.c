@@ -1,17 +1,12 @@
 #include "main.h"
 
-
 void SystemClock_Config(void);
 
 int main(void)
 {
     rt_oled_init();
     rt_mpu6050_init();
-    while (1)
-    {
-        // rt_kprintf("main thread\n");
-        rt_thread_delay(1000);
-    }
+    pwm_init();
     return 0;
 }
 
@@ -95,6 +90,7 @@ void Error_Handler(void)
   /* USER CODE BEGIN Error_Handler_Debug */
   /* User can add his own implementation to report the HAL error return state */
   __disable_irq();
+  rt_kprintf("Error_Handler\n");
   while (1)
   {
   }
