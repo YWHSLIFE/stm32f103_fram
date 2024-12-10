@@ -57,12 +57,14 @@ uint8_t MPU6050_Init(I2C_HandleTypeDef *I2Cx) {
 
         // Set accelerometer configuration in ACCEL_CONFIG Register
         // XA_ST=0,YA_ST=0,ZA_ST=0, FS_SEL=0 -> � 2g
-        Data = 0x00;
+        //0X00,0X08,0X10,0X18
+        Data = 0x08;
         HAL_I2C_Mem_Write(I2Cx, MPU6050_ADDR, ACCEL_CONFIG_REG, 1, &Data, 1, i2c_timeout);
 
         // Set Gyroscopic configuration in GYRO_CONFIG Register
         // XG_ST=0,YG_ST=0,ZG_ST=0, FS_SEL=0 -> � 250 �/s
-        Data = 0x00;
+        //0X00,0X08,0X10,0X18
+        Data = 0x08;
         HAL_I2C_Mem_Write(I2Cx, MPU6050_ADDR, GYRO_CONFIG_REG, 1, &Data, 1, i2c_timeout);
         return 0;
     }
@@ -198,7 +200,7 @@ double Kalman_getAngle(Kalman_t *Kalman, double newAngle, double newRate, double
     Kalman->P[1][0] -= K[1] * P00_temp;
     Kalman->P[1][1] -= K[1] * P01_temp;
 
-    return Kalman->angle;
+    return Kalman->angle * 1.2F;
 };
 
 void mpu6050_thread_entry(void *parameter)

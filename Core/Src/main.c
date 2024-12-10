@@ -7,7 +7,11 @@ int main(void)
     rt_oled_init();
     rt_mpu6050_init();
     pwm_init();
-    return 0;
+    while (1)
+    {
+      rt_thread_delay(1000);
+    }
+    
 }
 
 static void hello_main(void)
