@@ -6,6 +6,7 @@ static rt_timer_t oled_timer;
 
 static char pitch[20];
 static char roll[20];
+static char temp[20];
 static char time_flag = 0;
 
 void OLED_Init(void)
@@ -67,6 +68,7 @@ void oled_thread_entry(void *parameter)
 			// OLED_WinDrawStr(&oled_win,0,0*16,16,(uint8_t *)fps);
 			OLED_WinDrawStr(&oled_win,0,1*16,16,(uint8_t *)pitch);
 			OLED_WinDrawStr(&oled_win,0,2*16,16,(uint8_t *)roll);
+			OLED_WinDrawStr(&oled_win,0,3*16,16,(uint8_t *)temp);
 		}
         OLED_RefreshBuff();
 		rt_thread_delay(20);
@@ -83,6 +85,7 @@ static void oled_timeout(void *parameter)
 		// sprintf(fps,"FPS:%d",fps_num);
 		sprintf(pitch,"Pitch:%.2f",MPU6050.KalmanAngleX);
 		sprintf(roll,"Roll:%.2f",MPU6050.KalmanAngleY);
+		sprintf(temp,"Temp:%.1f",MPU6050.Temperature);
 	}
 	// fps_num = 0;
 }

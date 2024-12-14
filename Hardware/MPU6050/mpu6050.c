@@ -18,6 +18,7 @@ const uint16_t i2c_timeout = 100;
 const double Accel_Z_corrector = 14418.0;
 
 uint32_t timer;
+double roll,pitch;
 
 Kalman_t KalmanX = {
         .Q_angle = 0.001f,
@@ -36,6 +37,22 @@ static rt_timer_t mpu6050_timer;
 static struct rt_semaphore mpu6050_sem; /* 定义一个静态信号量 */
 MPU6050_t MPU6050;
 /*****************************************************************/
+
+static float Q_rsqrt( float number )
+{
+	long i;
+	float x2, y;
+	const float threehalfs = 1.5F;
+
+	x2 = number * 0.5F;
+	y  = number;
+	i  = * ( long * ) &y;                       // evil floating point bit level hacking
+	i  = 0x5f3759df - ( i >> 1 );               // what the fuck? 
+	y  = * ( float * ) &i;
+	y  = y * ( threehalfs - ( x2 * y * y ) );   // 1st iteration
+//	y  = y * ( threehalfs - ( x2 * y * y ) );   // 2nd iteration, this can be removed
+	return y;
+}
 
 uint8_t MPU6050_Init(I2C_HandleTypeDef *I2Cx) {
     uint8_t check;
@@ -151,26 +168,32 @@ void MPU6050_Read_All(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct) {
     DataStruct->Gz = DataStruct->Gyro_Z_RAW / 131.0;
 
     // Kalman angle solve
-    double dt = (double) (HAL_GetTick() - timer) / 1000;
+    double dt = (double) (HAL_GetTick() - timer) / 1000.0;
     timer = HAL_GetTick();
-    double roll;
-    double roll_sqrt = sqrt(
-            DataStruct->Accel_X_RAW * DataStruct->Accel_X_RAW + DataStruct->Accel_Z_RAW * DataStruct->Accel_Z_RAW);
-    if (roll_sqrt != 0.0) {
-        roll = atan(DataStruct->Accel_Y_RAW / roll_sqrt) * RAD_TO_DEG;
-    } else {
-        roll = 0.0;
-    }
-    double pitch = atan2(-DataStruct->Accel_X_RAW, DataStruct->Accel_Z_RAW) * RAD_TO_DEG;
-    if ((pitch < -90 && DataStruct->KalmanAngleY > 90) || (pitch > 90 && DataStruct->KalmanAngleY < -90)) {
-        KalmanY.angle = pitch;
-        DataStruct->KalmanAngleY = pitch;
-    } else {
-        DataStruct->KalmanAngleY = Kalman_getAngle(&KalmanY, pitch, DataStruct->Gy, dt);
-    }
-    if (fabs(DataStruct->KalmanAngleY) > 90)
-        DataStruct->Gx = -DataStruct->Gx;
-    DataStruct->KalmanAngleX = Kalman_getAngle(&KalmanX, roll, DataStruct->Gy, dt);
+    // double roll;
+    // double roll_sqrt = sqrt(
+    //         DataStruct->Accel_X_RAW * DataStruct->Accel_X_RAW + DataStruct->Accel_Z_RAW * DataStruct->Accel_Z_RAW);
+    // if (roll_sqrt != 0.0) {
+    //     roll = atan(DataStruct->Accel_Y_RAW / roll_sqrt) * RAD_TO_DEG;
+    // } else {
+    //     roll = 0.0;
+    // }
+    // double pitch = atan2(-DataStruct->Accel_X_RAW, DataStruct->Accel_Z_RAW) * RAD_TO_DEG;
+    // if ((pitch < -90 && DataStruct->KalmanAngleY > 90) || (pitch > 90 && DataStruct->KalmanAngleY < -90)) {
+    //     KalmanY.angle = pitch;
+    //     DataStruct->KalmanAngleY = pitch;
+    // } else {
+    //     DataStruct->KalmanAngleY = Kalman_getAngle(&KalmanY, pitch, DataStruct->Gy, dt);
+    // }
+    // if (fabs(DataStruct->KalmanAngleY) > 90)
+    //     DataStruct->Gx = -DataStruct->Gx;
+    // DataStruct->KalmanAngleX = Kalman_getAngle(&KalmanX, roll, DataStruct->Gy, dt);
+
+    roll = atan((DataStruct->Accel_Y_RAW) * Q_rsqrt((DataStruct->Accel_X_RAW) * (DataStruct->Accel_X_RAW) + (DataStruct->Accel_Z_RAW) * (DataStruct->Accel_Z_RAW))) * RAD_TO_DEG;
+    pitch = atan2(-(DataStruct->Accel_X_RAW), DataStruct->Accel_Z_RAW) * RAD_TO_DEG;
+    
+    DataStruct->KalmanAngleY = Kalman_getAngle(&KalmanY, pitch, DataStruct->Gy, dt);
+    DataStruct->KalmanAngleX = Kalman_getAngle(&KalmanX, roll, DataStruct->Gx, dt);
 
 }
 
@@ -209,9 +232,8 @@ void mpu6050_thread_entry(void *parameter)
     while(1)
     {   
         rt_sem_take(&mpu6050_sem, RT_WAITING_FOREVER);
-        // rt_kprintf("mpu6050_thread\n");
-        // rt_thread_delay(1000);
         MPU6050_Read_All(&hi2c2, &MPU6050);
+        rt_kprintf("%d,%d\n",(int)MPU6050.KalmanAngleX,(int)MPU6050.KalmanAngleY);
     }
 }
 
@@ -231,7 +253,7 @@ void rt_mpu6050_init(void)
     RT_ASSERT(tid != RT_NULL);
     rt_thread_startup(tid);
 
-	mpu6050_timer = rt_timer_create("mpu6050",mpu6050_timeout,NULL,10,RT_TIMER_FLAG_PERIODIC);
+	mpu6050_timer = rt_timer_create("mpu6050",mpu6050_timeout,NULL,7,RT_TIMER_FLAG_PERIODIC);
 	if(mpu6050_timer != NULL)
 		rt_timer_start(mpu6050_timer);
 }

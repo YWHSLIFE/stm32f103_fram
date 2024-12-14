@@ -11,7 +11,6 @@ int main(void)
     {
       rt_thread_delay(1000);
     }
-    
 }
 
 static void hello_main(void)
