@@ -15,6 +15,7 @@
         "oled_port.h": "c",
         "iic.h": "c",
         "mpu6050.h": "c",
-        "stm32f1xx_ll_adc.h": "c"
+        "stm32f1xx_ll_adc.h": "c",
+        "rtconfig.h": "c"
     }
 }

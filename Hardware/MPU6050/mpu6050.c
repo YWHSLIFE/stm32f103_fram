@@ -149,7 +149,9 @@ void MPU6050_Read_All(I2C_HandleTypeDef *I2Cx, MPU6050_t *DataStruct) {
     int16_t temp;
 
     // Read 14 BYTES of data starting from ACCEL_XOUT_H register
+	rt_interrupt_enter();
     HAL_I2C_Mem_Read(I2Cx, MPU6050_ADDR, ACCEL_XOUT_H_REG, 1, Rec_Data, 14, i2c_timeout);
+	rt_interrupt_leave();
 
     DataStruct->Accel_X_RAW = (int16_t) (Rec_Data[0] << 8 | Rec_Data[1]);
     DataStruct->Accel_Y_RAW = (int16_t) (Rec_Data[2] << 8 | Rec_Data[3]);
@@ -233,7 +235,7 @@ void mpu6050_thread_entry(void *parameter)
     {   
         rt_sem_take(&mpu6050_sem, RT_WAITING_FOREVER);
         MPU6050_Read_All(&hi2c2, &MPU6050);
-        rt_kprintf("%d,%d\n",(int)MPU6050.KalmanAngleX,(int)MPU6050.KalmanAngleY);
+        // rt_kprintf("%d,%d\n",(int)MPU6050.KalmanAngleX,(int)MPU6050.KalmanAngleY);
     }
 }
 
